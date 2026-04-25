@@ -2,3 +2,4 @@
 *.csv
 .venv/
 preprocess_data/
+*.txt
