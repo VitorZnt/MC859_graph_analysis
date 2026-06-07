@@ -1,0 +1,1579 @@
+/*
+This file is a register of the commands executed on top of the graphml graphs first exported to the Mendely database. Note that these commands were run in an interactive Neo4J Desktop instance, and, as such, there are redundant or test instructions. Take this file just as a registry and base for future looking up on the methodology.
+*/
+
+
+match (c:Channel)
+with c.pagerankOrder as pagerank_ranking, round(c.pagerank, 1) as pagerank_score, round(c.btwnWeight, 1) as betweenness_score
+return pagerank_ranking, pagerank_score, betweenness_score
+order by pagerank_ranking asc;
+
+match (c:Channel)
+with c.pagerankOrder as pagerank_ranking, round(c.pagerank, 1) as pagerank_score, round(c.btwnWeight, 1) as betweenness_score
+return pagerank_ranking, pagerank_score, betweenness_score
+order by betweenness_score desc;
+
+match (c:Channel)
+with c.pagerankOrder as pagerank_ranking, round(c.pagerank, 2) as pagerank_score, round(c.btwnWeight, 1) as betweenness_score
+return pagerank_ranking, pagerank_score, betweenness_score
+order by betweenness_score desc;
+
+match (c:Channel)
+with c.pagerankOrder as pagerank_ranking, round(c.pagerank, 1) as pagerank_score, round(c.btwnWeight, 1) as betweenness_score
+return pagerank_ranking, pagerank_score, betweenness_score
+order by betweenness_score desc;
+
+match (c:Channel)
+with c.pagerankOrder as pagerank_ranking, round(c.pagerank, 1) as pagerank_score, round(c.btwnWeight, 1) as betweenness_score
+return pagerank_ranking, pagerank_score, betweenness_score
+order by betweenness_score desc;
+
+match (c:Channel)
+with c.pagerankOrder as ranking, round(c.pagerank, 1) as pagerank_score, round(c.btwnWeight, 1) as betweenness_score
+return ranking, pagerank_score, betweenness_score
+order by betweenness_score desc;
+
+match (c:Channel)
+with c.pagerankOrder as ranking, c.pagerank as pagerank_score, c.btwnWeight as betweenness_score
+return ranking, round(pagerank_score, 1), round(betweenness_score, 1)
+order by betweenness_score desc;
+
+match (c:Channel)
+with c.pagerankOrder as ranking, c.pagerank as pagerank_score, c.btwnWeight as betweenness_score
+return ranking, round(pagerank_score, 1), round(betweenness_score, 1)
+order by ranking;
+
+match (c:Channel)
+with c.pagerankOrder as ranking, c.pagerank as pagerank_score, c.btwnWeight as betweenness_score
+return ranking, round(pagerank_score, 1), round(betweenness_score, 1)
+order by ranking desc;
+
+match (c:Channel)
+with c.pagerankOrder as ranking, c.pagerank as pagerank_score, c.btwnWeight as betweenness_score
+return ranking, round(pagerank_score, 1), round(betweenness_score, 1)
+order by pagerank_score desc;
+
+match (c:Channel)
+with c.pagerankOrder as ranking, c.pagerank as pagerank_score, c.btwnWeight as betweenness_score
+return ranking, pagerank_score, betweenness_score
+order by pagerank_score desc;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS WCCcomponentID, ch.componentChannelCount as channels_count, ch.componentChatCount as chat_count, ch.componentMessageCount as message_count, ch.start_time as timestamp_start, ch.end_time as timestamp_end, ch.duration_seconds as duration_seconds
+return WCCcomponentID, channels_count, chat_count, message_count, duration_seconds, timestamp_start, timestamp_end
+order by channels_count DESC;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS WCCcomponentID, ch.componentChannelCount as channels_count, ch.componentChatCount as chat_count, ch.componentMessageCount as message_count, ch.start_time as timestamp_start, ch.end_time as timestamp_end, ch.duration_seconds as duration_seconds
+return WCCcomponentID, channels_count, chat_count, message_count, duration_seconds/2628000, timestamp_start, timestamp_end
+order by channels_count DESC;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS WCCcomponentID, ch.componentChannelCount as channels_count, ch.componentChatCount as chat_count, ch.componentMessageCount as message_count, ch.start_time as timestamp_start, ch.end_time as timestamp_end, ch.duration_seconds as duration_seconds
+return WCCcomponentID, channels_count, chat_count, message_count, duration_seconds, timestamp_start, timestamp_end
+order by channels_count DESC;
+
+match (ch:Chat)
+where ch.is_root = 1
+set ch.duration_seconds = (ch.end_time - ch.start_time);
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS WCCcomponentID, ch.componentChannelCount as channels_count, ch.componentChatCount as chat_count, ch.componentMessageCount as message_count, ch.start_time as timestamp_start, ch.end_time as timestamp_end, ch.duration_seconds as duration_seconds
+return WCCcomponentID, channels_count, chat_count, message_count, duration_seconds, timestamp_start, timestamp_end
+order by channels_count DESC;
+
+match (ch:Chat)
+where ch.is_root = 1
+set ch.duration_seconds = (ch.start_time - ch.end_time);
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS WCCcomponentID, ch.componentChannelCount as channels_count, ch.componentChatCount as chat_count, ch.componentMessageCount as message_count, ch.start_time as timestamp_start, ch.end_time as timestamp_end, ch.duration_seconds as duration_seconds
+return WCCcomponentID, channels_count, chat_count, message_count, duration_seconds, timestamp_start, timestamp_end
+order by channels_count DESC;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS WCCcomponentID, ch.componentChannelCount as channels_count, ch.componentChatCount as chat_count, ch.componentMessageCount as message_count, ch.start_time as timestamp_start, ch.end_time as timestamp_end, ch.duration_seconds as duration_seconds
+return WCCcomponentID, channels_count, chat_count, message_count, duration_seconds, timestamp_start, timestamp_end
+order by channels_count DESC;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS WCCcomponentID, ch.componentChannelCount as channels_count, ch.componentChatCount as chat_count, ch.message_count as message_count, ch.start_time as timestamp_start, ch.end_time as timestamp_end, ch.duration_seconds as duration_seconds
+return WCCcomponentID, channels_count, chat_count, message_count, duration_seconds, timestamp_start, timestamp_end
+order by channels_count DESC;
+
+MATCH (ch:Chat)
+WITH DISTINCT ch.componentID AS componentID, ch.componentChannelCount as channel_count
+return componentID, channel_count
+order by channel_count DESC;
+
+MATCH (ch:Chat)
+WITH DISTINCT ch.componentID AS componentID, ch.componentChatCount as chat_count
+return componentID, chat_count
+order by chat_count DESC;
+
+MATCH (ch:Chat)
+WITH DISTINCT ch.componentID AS componentID, ch.componentMessageCount as msg_count
+return componentID, msg_count
+order by msg_count DESC;
+
+MATCH (ch:Chat)
+WITH DISTINCT ch.componentID AS compId, ch.componentMessageCount as msg
+return compId, msg
+order by msg DESC;
+
+MATCH (ch:Chat)
+WITH ch.componentID AS compId, ch.componentMessageCount as msg
+return compId, msg
+order by msg DESC;
+
+MATCH (ch:Chat)
+WITH ch.componentID AS compId, sum(ch.message_count) as messageCount
+return compId, messageCount
+
+next
+
+MATCH (ch:Chat)
+where ch.componentID = compId
+set ch.componentMessageCount = messageCount;
+
+match (ch:Channel)
+with sum(ch.btwnWeight) as sum
+return sum;
+
+match (c:Channel)<-[edge:forward_from]-(d:Channel)
+where c.pagerankOrder = 6 or c.pagerankOrder = 2 or c.pagerankOrder = 40 or c.pagerankOrder = 56 or c.pagerankOrder = 37
+return count(edge);
+
+match (c:Channel)<-[edge:forward_from]-(d:Channel)
+return count(edge) as cnt, c.pagerankOrder
+order by cnt desc;
+
+match (c:Channel)
+return c.pagerank, c.pagerankOrder
+order by c.pagerank desc;
+
+match (c:Channel)-[edge:forward_from]->(d:Channel)
+return count(edge) as cnt, c.pagerankOrder
+order by cnt desc;
+
+match (c:Channel)
+return c.btwnWeight, c.pagerankOrder
+order by c.btwnWeight desc;
+
+match (c:Channel)-[edge:forward_from]->(d:Channel)
+where c.pagerankOrder = 6 or c.pagerankOrder = 2 or c.pagerankOrder = 40 or c.pagerankOrder = 56 or c.pagerankOrder = 37
+return count(edge);
+
+match (c:Channel)
+return c.btwnWeight, c.pagerankOrder
+order by c.btwnWeight desc;
+
+MATCH (u:User)
+remove u.louvainCommunity;
+
+CALL gds.louvain.write('users_proj', { relationshipWeightProperty: 'weight', maxLevels:2, writeProperty:'LouvainCommunity'})
+YIELD communityCount, modularity;
+
+CALL gds.leiden.stream('users_proj', { relationshipWeightProperty: 'weight', maxLevels:2})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users_proj', { relationshipWeightProperty: 'weight', maxLevels:2})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users_proj', { relationshipWeightProperty: 'weight', maxLevels:2})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users_proj', { relationshipWeightProperty: 'weight', maxLevels:1})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.mutate('users_proj', { relationshipWeightProperty: 'weight', maxLevels:2, mutateProperty:'louvain4'})
+YIELD communityCount;
+
+CALL gds.louvain.mutate('users_proj', { relationshipWeightProperty: 'weight', maxLevels:2, writeProperty:'louvain4'})
+YIELD communityCount;
+
+CALL gds.louvain.mutate('users_proj', { relationshipWeightProperty: 'weight', maxLevels:2})
+YIELD communityCount;
+
+CALL gds.leiden.write('users_proj', { relationshipWeightProperty: 'weight', maxLevels:2, writeProperty:'LeidenCommunity'})
+YIELD communityCount;
+
+CALL gds.leiden.stream('users_proj', { relationshipWeightProperty: 'weight', maxLevels:2})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users_proj', { relationshipWeightProperty: 'weight', maxLevels:1})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users_proj', { relationshipWeightProperty: 'weight', maxLevels:3})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users_proj', { relationshipWeightProperty: 'weight', maxLevels:2})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users_proj', { relationshipWeightProperty: 'weight', maxLevels:1})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.write('users_proj', { relationshipWeightProperty: 'weight', maxLevels:1, writeProperty:'louvainCommunity'})
+YIELD communityCount, modularity;
+
+CALL gds.louvain.write('users-proj', { relationshipWeightProperty: 'weight', maxLevels:1, writeProperty:'louvainCommunity'})
+YIELD communityCount, modularity;
+
+CALL gds.graph.project(
+  'users_proj',
+  'User',
+  {
+    fwd_reply: {
+      orientation: 'UNDIRECTED',
+      properties: 'weight'
+    }
+  }
+);
+
+CALL gds.graph.drop('users-proj');
+
+CALL gds.graph.project(
+  'users-proj',
+  'User',
+  {
+    fwd_reply: {
+      orientation: 'UNDIRECTED',
+      properties: 'weight'
+    }
+  }
+);
+
+CALL gds.graph.drop('users_proj');
+
+CALL gds.graph.drop('users_proj');
+
+CALL gds.louvain.mutate('users-proj', { relationshipWeightProperty: 'weight', maxLevels:3, mutateProperty:'louvainCommunity3'})
+YIELD modularity, modularities;
+
+CALL gds.louvain.mutate('users-proj', { relationshipWeightProperty: 'weight', maxLevels:2, mutateProperty:'louvainCommunity2'})
+YIELD modularity, modularities;
+
+CALL gds.louvain.mutate('users-proj', { relationshipWeightProperty: 'weight', maxLevels:1, mutateProperty:'louvainCommunity1'})
+YIELD modularity, modularities;
+
+CALL gds.louvain.mutate('users-proj', { relationshipWeightProperty: 'weight', maxLevels:1, mutateProperty:'louvainCommunity'})
+YIELD modularity, modularities;
+
+CALL gds.louvain.mutate('users-proj', { relationshipWeightProperty: 'weight', maxLevels:1, mutateProperty:'louvainCommunity'})
+YIELD modularity, modularities;
+
+CALL gds.louvain.mutate('users-proj', { relationshipWeightProperty: 'weight', maxLevels:1, mutateProperty:'louvainCommunity'})
+YIELD modularity, modularities;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxLevels:2})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxLevels:3})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxLevels:2})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxLevels:1})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxLevels:2})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxLevels:1})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxLevels:2})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxLevels:1})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxlevels:1})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxiterations:20})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxiterations:10})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxiterations:2})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxiterations:1})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxlevels:1})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxlevels:20})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxlevels:0})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxlevels:1})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxlevels:2})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxlevels:8})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxlevels:10})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight' })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.graph.project(
+  'users-proj',
+  'User',
+  {
+    fwd_reply: {
+      orientation: 'UNDIRECTED',
+      properties: 'weight'
+    }
+  }
+);
+
+CALL gds.graph.project(
+  'users_proj',
+  'User',
+  {
+    fwd_reply: {
+      orientation: 'UNDIRECTED'
+    }
+  }
+);
+
+MATCH (ch:Chat)
+WITH ch.componentID AS compId, count(ch.chat_id) as chatCount
+return compId, chatCount
+
+next
+
+MATCH (ch:Chat)
+where ch.componentID = compId
+set ch.componentChatCount = chatCount;
+
+MATCH (n) 
+WHERE n.componentChannelCount IS NOT NULL
+RETURN DISTINCT "node" as entity, n.componentChannelCount AS componentChannelCount LIMIT 25
+UNION ALL 
+MATCH ()-[r]-() 
+WHERE r.componentChannelCount IS NOT NULL
+RETURN DISTINCT "relationship" AS entity, r.componentChannelCount AS componentChannelCount LIMIT 25;
+
+match (c:Channel)
+return c.btwnWeight, c.pagerankOrder
+order by c.btwnWeight desc;
+
+match (c:Channel)
+return c.pagerank, c.pagerankOrder
+order by c.pagerank desc;
+
+match (c:Channel)
+return c.pagerank, c.pagerankOrder
+order by c.pagerank;
+
+MATCH (c:Channel)
+WHERE c.pagerank IS NOT NULL
+WITH c ORDER BY c.pagerank DESC
+WITH collect(c) AS orderedChannels
+UNWIND range(0, size(orderedChannels) - 1) AS idx
+SET (orderedChannels[idx]).pagerankOrder = idx + 1;
+
+match (ch:Channel)
+return ch.pagerank as pg
+order by pg desc;
+
+match (ch:Channel)
+return ch.pagerank pg
+order by pg desc;
+
+match (ch:Channel)
+return ch.pagerank;
+
+MATCH(ch:Channel)
+return ch.btwnWeightless;
+
+MATCH(ch:Channel)
+remove ch.btwnWeightless;
+
+MATCH(ch:Channel);
+
+MATCH (n) 
+WHERE n.inDegree IS NOT NULL
+RETURN DISTINCT "node" as entity, n.inDegree AS inDegree LIMIT 25
+UNION ALL 
+MATCH ()-[r]-() 
+WHERE r.inDegree IS NOT NULL
+RETURN DISTINCT "relationship" AS entity, r.inDegree AS inDegree LIMIT 25;
+
+MATCH (n) 
+WHERE n.incomingDegree IS NOT NULL
+RETURN DISTINCT "node" as entity, n.incomingDegree AS incomingDegree LIMIT 25
+UNION ALL 
+MATCH ()-[r]-() 
+WHERE r.incomingDegree IS NOT NULL
+RETURN DISTINCT "relationship" AS entity, r.incomingDegree AS incomingDegree LIMIT 25;
+
+CALL apoc.export.csv.query(
+  "MATCH (ch:Chat)
+   where ch.componentID = 0
+   RETURN ch.chat_id
+  ",
+  "firstcomponent_id_0.csv",
+  { quotes: 'none' }
+) YIELD file, rows
+RETURN file, rows;
+
+CALL apoc.export.csv.query(
+  "MATCH (ch:Chat)
+   where ch.componentID = 107635
+   RETURN ch.chat_id
+  ",
+  "secondcomponent_id_107635.csv",
+  { quotes: 'none' }
+) YIELD file, rows
+RETURN file, rows;
+
+CALL apoc.export.csv.query(
+  "MATCH (ch:Chat)
+   where ch.componentID = 107628
+   RETURN ch.chat_id
+  ",
+  "thirdcomponent_id_107628.csv",
+  { quotes: 'none' }
+) YIELD file, rows
+RETURN file, rows;
+
+CALL apoc.export.csv.query(
+  "MATCH (ch:Chat)
+   where ch.componentID = 144495
+   RETURN ch.chat_id
+  ",
+  "testcomponent_id_144495.csv",
+  { quotes: 'none' }
+) YIELD file, rows
+RETURN file, rows;
+
+CALL apoc.export.csv.query(
+  "MATCH (ch:Chat)
+   where ch.componentID = 144495
+   RETURN ch.chat_id
+  ",
+  "testcomponent_id_144495.csv",
+  {}
+) YIELD file, rows
+RETURN file, rows;
+
+CALL apoc.export.csv.query(
+  "MATCH (ch:Chat)
+   where ch.componentID = 107628
+   RETURN ch.chat_id
+  ",
+  "thirdcomponent_id_107628.csv",
+  {}
+) YIELD file, rows
+RETURN file, rows;
+
+CALL apoc.export.csv.query(
+  "MATCH (ch:Chat)
+   where ch.componentID = 107635
+   RETURN ch.chat_id
+  ",
+  "secondcomponent_id_107635.csv",
+  {}
+) YIELD file, rows
+RETURN file, rows;
+
+CALL apoc.export.csv.query(
+  "MATCH (ch:Chat)
+   where ch.componentID = 0
+   RETURN ch.chat_id
+  ",
+  "firstcomponent_id_0.csv",
+  {}
+) YIELD file, rows
+RETURN file, rows;
+
+MATCH (ch:Chat)
+with ch.componentID as compId, count(*) as count
+return compId, count
+ORDER BY count desc;
+
+MATCH (ch:Chat);
+
+MATCH (root:Chat {is_root: 1})
+MATCH (root)-[r:fwd_reply]->(neighbor)
+RETURN root, r, neighbor;
+
+MATCH (root:Chat {is_root: 1})
+MATCH (root)-[r:fwd_reply]-(neighbor)
+RETURN root, r, neighbor;
+
+match (ch:Chat)--(ch2:Chat)
+where ch.is_root = 1
+return ch, ch2;
+
+match (ch:Chat)-->(ch2:Chat)
+where ch.is_root = 1
+return ch, ch2;
+
+match (ch:Chat);
+
+match (ch:Chat);
+
+MATCH (ch:Chat)
+WITH ch.componentID AS compId, count(DISTINCT ch.channel_id) as channelCount
+return compId, channelCount
+
+next
+
+MATCH (ch:Chat)
+where ch.componentID = compId
+set ch.componentChannelCount = channelCount;
+
+MATCH (ch:Chat)
+where ch.componentID = 0 and ch.is_root = 1
+return ch.chat_id;
+
+MATCH (ch:Chat)
+where ch.componentID = 0 and ch.is_root
+return ch.chat_id;
+
+MATCH (ch:Chat)
+where ch.componentID = 0
+with count(DISTINCT ch.is_root) as count
+return count;
+
+MATCH (ch:Chat)
+where ch.componentID = 0
+with count(DISTINCT ch.chat_id) as count
+return count;
+
+MATCH (ch:Chat)
+where ch.componentID = 0
+with count(DISTINCT ch.channel_id) as count
+return count;
+
+MATCH (ch:Chat)
+where ch.componentID = 0
+with count(*) as count
+return count;
+
+MATCH (ch:Chat)
+where ch.componentID = 0
+with count(*) as count
+return compId, count;
+
+MATCH (ch:Chat)
+WITH ch.componentID AS compId, count(DISTINCT ch.channel_id) as channelCount
+return compId, channelCount;
+
+MATCH (ch:Chat)
+with count(DISTINCT ch.componentID) as count
+return count;
+
+match (ch:Chat) with count(DISTINCT ch.componentID) as count return count;
+
+match (ch:Chat) with count(DISTINCT ch.componentID) as count return count;
+
+match (ch:Chat) where ch.is_root=1 with count(*) as count return count;
+
+MATCH (ch:Chat)
+WITH ch.componentID AS compId, max(ch.end_time) as maxEnd
+return compId, maxEnd
+
+next
+
+MATCH (ch:Chat)
+where ch.is_root = 1 and ch.componentID = compId
+set ch.end_time = maxEnd;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS compId, ch.componentSize as size, count(*) as count
+where count>1
+return compId, count, size;
+
+match(ch:Chat)
+with ch.componentID as cid, collect(ch) as nodes
+where size(nodes)<16
+UNWIND nodes as n
+DETACH DELETE n;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS compId, ch.componentSize as size, count(*) as count
+where count>1
+return compId, count, size;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS compId, count(*) as count
+where count>1
+return compId, count;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS compId, count(*) as count
+return compId, count;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS compId, count(*) as count
+where count > 1
+return ch.chat_id, ch.componentID, ch.componentSize;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS compId, count(ch) as count
+where count > 1
+return ch.chat_id, ch.componentID, ch.componentSize;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS compId, count(ch)>1 as count
+return ch.chat_id, ch.componentID, ch.componentSize;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS compId, count(ch)>1
+return ch.chat_id, ch.componentID, ch.componentSize;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS compId, count()>1 as count
+return ch.chat_id, ch.componentID, ch.componentSize;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS compId, count(*)>1 as count
+return ch.chat_id, ch.componentID, ch.componentSize;
+
+MATCH (ch:Chat)
+where ch.is_root = 1
+WITH ch.componentID AS compId, count(*)>1
+return ch.chat_id, ch.componentID, ch.componentSize;
+
+MATCH (ch:Chat)
+WHERE ch.componentID IS NOT NULL
+WITH ch.componentID AS compId, min(ch.start_time) AS minStart
+return compId, minStart
+
+next 
+
+MATCH (ch:Chat)
+where ch.componentID = compId and ch.start_time = minStart
+set ch.is_root = 1;
+
+MATCH (ch:Chat)
+WHERE ch.componentID IS NOT NULL
+WITH ch.componentID AS compId, min(ch.start_time) AS minStart
+return compId, minStart
+order by compId desc;
+
+MATCH (ch:Chat)
+with count(DISTINCT ch.componentID) as count
+return count;
+
+MATCH (ch:Chat)
+with count(ch.componentID) as count
+return count;
+
+MATCH (n) 
+WHERE n.componentID IS NOT NULL
+RETURN DISTINCT "node" as entity, n.componentID AS componentID LIMIT 25
+UNION ALL 
+MATCH ()-[r]-() 
+WHERE r.componentID IS NOT NULL
+RETURN DISTINCT "relationship" AS entity, r.componentID AS componentID LIMIT 25;
+
+MATCH (ch:Chat)
+WHERE ch.componentID IS NOT NULL
+WITH ch.componentID AS compId, min(ch.start_time) AS minStart
+return compId, minStart;
+
+MATCH (ch:Chat)
+SET ch.is_root = 0;
+
+MATCH (ch:Chat)
+WHERE ch.is_root = 1
+RETURN ch.componentID, ch.chat_id, ch.start_time;
+
+MATCH (ch:Chat)
+WHERE ch.componentID IS NOT NULL
+WITH ch.componentID AS compId, min(ch.start_time) AS minStart
+
+// Localiza novamente o nó (ou nós, caso haja empate) que possui esse menor tempo dentro da componente
+MATCH (root:Chat)
+WHERE root.componentID = compId AND root.start_time = minStart
+SET root.is_root = 1;
+
+MATCH (ch:Chat)
+SET ch.is_root = 0;
+
+MATCH (n) 
+WHERE n.componentSize IS NOT NULL
+RETURN DISTINCT "node" as entity, n.componentSize AS componentSize LIMIT 25
+UNION ALL 
+MATCH ()-[r]-() 
+WHERE r.componentSize IS NOT NULL
+RETURN DISTINCT "relationship" AS entity, r.componentSize AS componentSize LIMIT 25;
+
+MATCH (c:Chat)
+WITH c.componentID AS compID, count(*) AS size
+return compID, size
+order by size asc;
+
+MATCH (c:Chat)
+WITH c.componentId AS compID, count(*) AS size
+return compID, size
+order by size asc;
+
+MATCH (c:Chat)
+WITH c.componentId AS compID, count(*) AS size
+return compId, size
+order by size asc;
+
+MATCH (c:Chat)
+WITH c.componentId AS compId, count(*) AS size
+return compId, size
+order by size asc;
+
+match(ch:Chat)
+with ch.componentID as cid, collect(ch) as nodes
+where size(nodes)<4
+UNWIND nodes as n
+DETACH DELETE n;
+
+MATCH (c:Chat)
+WITH c.componentId AS compId, count(*) AS size
+return compId, size
+order by size asc;
+
+CALL apoc.export.csv.query(
+  "MATCH (ch:Chat)
+   WITH ch.componentId AS compId, count(*) AS componentSize
+   WITH componentSize, 
+        toInteger(floor(log(componentSize) / log(2.0))) AS binIndex
+   RETURN 
+        binIndex, 
+        count(*) AS quantityOfComponents, 
+        min(componentSize) AS minSizeInBin, 
+        max(componentSize) AS maxSizeInBin
+   ORDER BY binIndex",
+  "chats_weak_comp.csv",
+  {}
+) YIELD file, rows
+RETURN file, rows;
+
+MATCH (c:Chat)
+WITH c.componentId AS compId, count(*) AS size
+return compId, size
+order by size desc;
+
+MATCH (c:Chat)
+WITH c.componentID AS compId, count(*) AS size
+return compId, size
+order by size desc;
+
+CALL apoc.export.csv.query(
+  "MATCH (ch:Chat)
+   WITH ch.componentID AS compId, count(*) AS componentSize
+   WITH componentSize, 
+        toInteger(floor(log(componentSize) / log(2.0))) AS binIndex
+   RETURN 
+        binIndex, 
+        count(*) AS quantityOfComponents, 
+        min(componentSize) AS minSizeInBin, 
+        max(componentSize) AS maxSizeInBin
+   ORDER BY binIndex",
+  "chats_weak_comp.csv",
+  {}
+) YIELD file, rows
+RETURN file, rows;
+
+CALL gds.wcc.write('chats_proj', {
+  writeProperty: 'componentId'
+})
+YIELD nodePropertiesWritten, componentCount;
+
+CALL gds.graph.project(
+  'chats_proj',
+  'Chat',
+  {
+    fwd_reply: {
+      orientation: 'NATURAL'
+    }
+  }
+);
+
+CALL apoc.import.graphml("chats_graph.graphml", {readLabels: true});
+
+MATCH (c:Chat)
+where c.componentID <> 0
+WITH count(*) AS size
+return size;
+
+MATCH (c:Chat)
+WITH count(*) AS size
+where c.componentID <> 0
+return size;
+
+MATCH (c:Chat)
+WITH c.componentID AS compId, count(*) AS size
+where compId <> 0
+return size;
+
+MATCH (c:Chat)
+WITH c.componentID AS compId, count(*) AS size
+return compId, size
+order by size desc;
+
+CALL gds.leiden.stream('users-proj', { relationshipWeightProperty: 'weight', gamma:5.0 })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users-proj', { relationshipWeightProperty: 'weight' })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight' })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxLevels:1 })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.graph.project(
+  'users-proj',
+  'User',
+  {
+    reply: {
+      orientation: 'UNDIRECTED',
+      properties: 'weight'
+    }
+  }
+);
+
+CALL gds.graph.project(
+  'users-proj',
+  'User',
+  {
+    fwd_reply: {
+      orientation: 'UNDIRECTED',
+      properties: 'weight'
+    }
+  }
+);
+
+CALL gds.leiden.stream('users-proj', { relationshipWeightProperty: 'weight', gamma:5.0})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users-proj', { relationshipWeightProperty: 'weight', gamma:10.0})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users-proj', { relationshipWeightProperty: 'weight', gamma:3.0})
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users-proj', { relationshipWeightProperty: 'weight', gamma:1.5 })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users-proj', { relationshipWeightProperty: 'weight' })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxLevels:1 })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', maxLevels:2 })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight' })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.louvain.stream('users-proj', { relationshipWeightProperty: 'weight', randomSeed: 35 })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users-proj', { relationshipWeightProperty: 'weight', randomSeed: 35 })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users-proj', { relationshipWeightProperty: 'weight', randomSeed: 2 })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.stream('users-proj', { relationshipWeightProperty: 'weight', randomSeed: 19 })
+YIELD nodeId, communityId
+RETURN communityId, count(*)
+ORDER BY count(*) desc;
+
+CALL gds.leiden.write.estimate('users-proj', {relationshipWeightProperty: 'weight', writeProperty: 'communityId', randomSeed: 19})
+YIELD nodeCount, relationshipCount, requiredMemory;
+
+CALL gds.leiden.write.estimate('myGraph', {relationshipWeightProperty: 'weight', writeProperty: 'communityId', randomSeed: 19})
+YIELD nodeCount, relationshipCount, requiredMemory;
+
+CALL gds.graph.project(
+  'users-proj',
+  'User',
+  {
+    fwd_reply: {
+      orientation: 'UNDIRECTED',
+      properties: 'weight'
+    }
+  }
+);
+
+CALL gds.graph.project(
+  'users-proj',
+  'User',
+  {
+    fwd_reply: {
+      orientation: 'UNDIRECTED',
+      weight: 'weight'
+    }
+  }
+);
+
+MATCH (ch:Chat)
+WHERE ch.componentSize > 31
+WITH ch.componentID AS compID, 
+     ch.componentSize AS size, 
+     min(ch.start_time) AS tempoInicial, 
+     max(ch.end_time) AS tempoFinal
+RETURN compID, 
+       size, 
+       tempoInicial, 
+       tempoFinal, 
+       (tempoFinal - tempoInicial) AS duracao
+ORDER BY duracao DESC;
+
+match(ch:Chat)
+where ch.componentSize>31
+return ch.componentID, avg(ch.componentSize), min(ch.start_time) as min, max(ch.end_time) as max
+order by max(max-min);
+
+match(ch:Chat)
+where ch.componentSize>31
+return ch.componentID, avg(ch.componentSize), min(ch.start_time), max(ch.end_time)
+order by min(ch.start_time);
+
+match(ch:Chat)
+where ch.componentSize>31
+return ch.componentID, min(ch.start_time), max(ch.end_time)
+order by min(ch.start_time);
+
+match(ch:Chat)
+where not (ch)-->()
+return ch.componentID, count(*)
+order by count(*) desc;
+
+match(ch:Chat)
+where not (ch)-->()
+return ch.componentID, count(*)
+order by count(*);
+
+match(ch:Chat)
+where not (ch)-->()
+return ch.componentID, count(*);
+
+CALL apoc.export.csv.query(
+  "MATCH (ch:Chat)
+   WITH ch.componentID AS compId, count(*) AS componentSize
+   WITH componentSize, 
+        toInteger(floor(log(componentSize) / log(2.0))) AS binIndex
+   RETURN 
+        binIndex, 
+        count(*) AS quantityOfComponents, 
+        min(componentSize) AS minSizeInBin, 
+        max(componentSize) AS maxSizeInBin
+   ORDER BY binIndex",
+  "NEW_chats_comp.csv",
+  {}
+) YIELD file, rows
+RETURN file, rows;
+
+match(ch:Chat)
+with ch.componentID as cid, collect(ch) as nodes
+where size(nodes)<3
+UNWIND nodes as n
+DETACH DELETE n;
+
+CALL apoc.export.csv.query(
+  "MATCH (ch:Chat)
+   WITH ch.componentID AS compId, count(*) AS componentSize
+   WITH componentSize, 
+        toInteger(floor(log(componentSize) / log(2.0))) AS binIndex
+   RETURN 
+        binIndex, 
+        count(*) AS quantityOfComponents, 
+        min(componentSize) AS minSizeInBin, 
+        max(componentSize) AS maxSizeInBin
+   ORDER BY binIndex",
+  "NEW_chats_comp.csv",
+  {}
+) YIELD file, rows
+RETURN file, rows;
+
+match (ch:Chat)
+return ch.componentSize, count(*)
+order by ch.componentSize desc;
+
+MATCH (c:Chat)
+WITH c.componentID AS compId, collect(c) AS nodes, count(*) AS size
+UNWIND nodes AS n
+SET n.componentSize = size;
+
+MATCH (c:Chat)
+WITH c.componentID AS compId, count(*) AS size
+return compId, size
+order by size desc;
+
+call gds.wcc.write("chats_proj", {writeProperty: "componentID"})
+yield nodePropertiesWritten, componentCount, componentDistribution;
+
+call gds.wcc.write("chat-proj", {writeProperty: "componentID"})
+yield nodePropertiesWritten, componentCount, componentDistribution;
+
+call gds.wcc.stats("chat-proj", {writeProperty: "componentID"})
+yield nodePropertiesWritten, componentCount, componentDistribution;
+
+call gds.wcc.stats("chat-proj", {writeProperty: "componentID"})
+yield nodePropertiesWritten, componentCount, componentDistribution;
+
+call gds.wcc.stream("chat-proj", {writeProperty: "componentID"})
+yield nodePropertiesWritten, componentCount, componentDistribution;
+
+CALL gds.graph.project(
+  'chats_proj',
+  'Chat',
+  {
+    reply: {
+      orientation: 'NATURAL'
+    }
+  }
+);
+
+CALL gds.graph.project(
+  'chats_proj',
+  'Chat',
+  {
+    fwd_reply: {
+      orientation: 'NATURAL'
+    }
+  }
+);
+
+match(ch:Chat)
+where ch.componentSize>31
+return ch.componentID, avg(ch.componentSize), min(ch.start_time), max(ch.end_time)
+order by min(ch.start_time);
+
+match(ch:Chat)
+where ch.componentSize>31
+return ch.componentID, min(ch.start_time), max(ch.end_time)
+order by min(ch.start_time);
+
+match(ch:Chat)
+where ch.componentSize>31
+return ch.componentID, min(ch.start_time), max(ch.end_time), sum(ch.duration_seconds)
+order by min(ch.start_time);
+
+match(ch:Chat)
+return ch.componentID, min(ch.start_time), max(ch.end_time), sum(ch.duration_seconds);
+
+match(ch:Chat)
+where not (ch)-->()
+return ch.componentID, min(ch.start_time), max(ch.end_time), sum(ch.duration_seconds);
+
+match(ch:Chat)
+where not (ch)-->()
+return ch.componentID, count(*);
+
+match (ch:Chat)
+return ch.componentID as id, count(*) as count
+order by count desc;
+
+match (ch:Chat)
+return ch.componentSize, count(*)
+order by ch.componentSize desc;
+
+match (ch:Chat)
+return ch.componentSize, count(*)
+order by ch.componentSize desc;
+
+match (ch:Chat)
+return DISTINCT ch.componentSize
+order by ch.componentSize desc;
+
+match (ch:Chat)
+return DISTINCT ch.componentSize, ch.componentID
+order by ch.componentSize desc;
+
+MATCH (c:Chat)
+WITH c.componentSize AS compId, count(*) AS size
+return compId, size
+order by size desc;
+
+MATCH (c:Chat)
+WITH c.componentID AS compId, collect(c) AS nodes, count(*) AS size
+UNWIND nodes AS n
+SET n.componentSize = size;
+
+MATCH (c:Chat)
+WITH c.componentID AS compId, collect(c) AS nodes, count(*) AS size
+return compId, size;
+
+MATCH (c:Chat)
+WITH c.componentId AS compId, collect(c) AS nodes, count(*) AS size
+return compId, size;
+
+MATCH (c:Chat)
+WITH c.componentId AS compId, collect(c) AS nodes, count(*) AS size
+return size;
+
+MATCH (c:Chat)
+WITH c.componentSize AS compId, count(*) AS size
+return compId, size
+order by size desc;
+
+MATCH (c:Chat)
+WITH c.componentId AS compId, collect(c) AS nodes, count(*) AS size
+UNWIND nodes AS n
+SET n.componentSize = size;
+
+MATCH (c:Chat)
+WITH c.componentID AS compId, count(*) AS size
+return compId, size
+order by size desc;
+
+match (ch:Chat)
+return ch.componentID, count(distinct ch.componentID) as ct
+order by ct desc;
+
+MATCH (c:Chat) 
+RETURN c.componentSize, count(*) 
+ORDER BY c.componentSize DESC;
+
+match (ch:Chat)
+return ch.componentSize
+order by ch.componentSize asc;
+
+match (ch:Chat)
+return ch.componentSize
+order by ch.componentSize desc;
+
+match (ch:Chat)
+return DISTINCT ch.componentSize
+order by ch.componentSize desc;
+
+match (ch:Chat)
+return ch.componentID, DISTINCT ch.componentSize
+order by ch.componentSize desc;
+
+match (ch:Chat)
+return DISTINCT ch.componentSize, ch.componentID
+order by ch.componentSize desc;
+
+MATCH (c:Chat)
+WITH c.componentId AS compId, collect(c) AS nodes, count(*) AS size
+UNWIND nodes AS n
+SET n.componentSize = size;
+
+MATCH (c:Chat)
+WITH c.componentID AS compId, count(*) AS size
+MATCH (chat:Chat {componentID: compId})
+SET chat.componentSize = size;
+
+MATCH (c:Chat)
+WITH c.componentID AS compId, count(*) AS size
+return compId, size
+order by size desc;
+
+MATCH (c:Chat)
+WITH c.componentId AS compId, count(*) AS size
+return compId, size
+order by size desc;
+
+CALL apoc.export.csv.query(
+  "MATCH (ch:Chat)
+   WITH ch.componentID AS compId, count(*) AS componentSize
+   WITH componentSize, 
+        toInteger(floor(log(componentSize) / log(2.0))) AS binIndex
+   RETURN 
+        binIndex, 
+        count(*) AS quantityOfComponents, 
+        min(componentSize) AS minSizeInBin, 
+        max(componentSize) AS maxSizeInBin
+   ORDER BY binIndex",
+  "chats_comp_real.csv",
+  {}
+) YIELD file, rows
+RETURN file, rows;
+
+CALL apoc.export.csv.query(
+  "CALL gds.alpha.wcc.stream('chats_proj')
+   YIELD nodeId, componentId
+   WITH componentId, count(*) AS componentSize
+   // Lógica Log2: bin 0=1, bin 1=2, bin 2=4, bin 3=8, bin 4=16...
+   WITH componentSize, 
+        toInteger(floor(log(componentSize) / log(2.0))) AS binIndex
+   RETURN 
+        binIndex, 
+        count(*) AS quantityOfComponents, 
+        min(componentSize) AS minSizeInBin, 
+        max(componentSize) AS maxSizeInBin
+   ORDER BY binIndex",
+  "chats_comp.csv",
+  {}
+) YIELD file, rows
+RETURN file, rows;
+
+CALL apoc.export.csv.query(
+  "CALL gds.alpha.wcc.stream('chats_proj')
+   YIELD nodeId, componentId
+   WITH componentId, count(*) AS componentSize
+   // Lógica Log2: bin 0=1, bin 1=2, bin 2=4, bin 3=8, bin 4=16...
+   WITH componentSize, 
+        toInteger(floor(log(componentSize) / log(2.0))) AS binIndex
+   RETURN 
+        binIndex, 
+        count(*) AS quantityOfComponents, 
+        min(componentSize) AS minSizeInBin, 
+        max(componentSize) AS maxSizeInBin
+   ORDER BY binIndex",
+  "chats_comp.csv",
+  {}
+) YIELD file, rows
+RETURN file, rows;
+
+CALL apoc.export.csv.query(
+  "CALL gds.alpha.scc.stream('chats_proj')
+   YIELD nodeId, componentId
+   WITH componentId, count(*) AS componentSize
+   // Lógica Log2: bin 0=1, bin 1=2, bin 2=4, bin 3=8, bin 4=16...
+   WITH componentSize, 
+        toInteger(floor(log(componentSize) / log(2.0))) AS binIndex
+   RETURN 
+        binIndex, 
+        count(*) AS quantityOfComponents, 
+        min(componentSize) AS minSizeInBin, 
+        max(componentSize) AS maxSizeInBin
+   ORDER BY binIndex",
+  "chats_comp.csv",
+  {}
+) YIELD file, rows
+RETURN file, rows;
+
+CALL gds.graph.project(
+  'chats_proj',
+  'Chat',
+  {
+    fwd_reply: {
+      orientation: 'NATURAL'
+    }
+  }
+);
+
+CALL gds.graph.project("chats_proj");
+
+match (ch:Chat)
+return distinct ch.componentID, count(*) as ct
+order by ct desc;
+
+match (ch:Chat)
+return ch.componentID, count(distinct ch.componentID) as ct
+order by ct desc;
+
+match (ch:Chat)
+return count(distinct ch.componentID) as ct
+order by ct desc;
+
+match (ch:Chat)
+return count(ch.componentID) as ct
+order by ct desc;
+
+match (ch:Channel)
+return properties(ch);
+
+match (ch:Channel)
+return ch.incomingDegree as prop
+order by prop desc;
+
+match (ch:Channel)
+return ch.pagerank as prop
+order by prop desc;
+
+match (ch:Channel)
+return ch.btwnWeightless as prop
+order by prop desc;
+
+match (ch:Channel)
+return ch.btwnWeight as prop
+order by prop desc;
+
+match (ch:Channel)
+return ch.btwnWeight
+order desc;
+
+match (ch:Channel)
+return properties(ch);
+
+match (ch:Channel)
+return ch.inWeight, ch.incomingDegree;
+
+match (ch:Channel)
+return ch.channel_id, ch.incomingDegree
+order by ch.incomingDegree desc;
+
+match (ch:Channel)
+return ch.channel_id, ch.centralityDistribution;
+
+match (ch:Channel)
+return ch.channel_id, ch.incomingDegree;
+
+MATCH (n) 
+WHERE n.inWeight IS NOT NULL
+RETURN DISTINCT "node" as entity, n.inWeight AS inWeight LIMIT 25
+UNION ALL 
+MATCH ()-[r]-() 
+WHERE r.inWeight IS NOT NULL
+RETURN DISTINCT "relationship" AS entity, r.inWeight AS inWeight LIMIT 25;
+
+MATCH (n) 
+WHERE n.pagerank IS NOT NULL
+RETURN DISTINCT "node" as entity, n.pagerank AS pagerank LIMIT 25
+UNION ALL 
+MATCH ()-[r]-() 
+WHERE r.pagerank IS NOT NULL
+RETURN DISTINCT "relationship" AS entity, r.pagerank AS pagerank LIMIT 25;
+
+MATCH (n) 
+WHERE n.incomingDegree IS NOT NULL
+RETURN DISTINCT "node" as entity, n.incomingDegree AS incomingDegree LIMIT 25
+UNION ALL 
+MATCH ()-[r]-() 
+WHERE r.incomingDegree IS NOT NULL
+RETURN DISTINCT "relationship" AS entity, r.incomingDegree AS incomingDegree LIMIT 25;
+
+MATCH (n:Channel) RETURN n LIMIT 25;
+
+CALL gds.betweenness.write('ch-project', {samplingSize:100, relationshipWeightProperty: 'weight', writeProperty: 'btwnWeight'})
+YIELD nodePropertiesWritten
+return nodePropertiesWritten;
+
+CALL gds.betweenness.write('ch-project', {samplingSize:100, writeProperty: 'btwnWeightless'})
+YIELD nodePropertiesWritten
+return nodePropertiesWritten;
+
+CALL gds.betweenness.stream('ch-project', {samplingSize:100})
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).channel_id AS id, score
+ORDER BY score desc;
+
+CALL gds.betweenness.stream('ch-project', {samplingSize:100})
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).channel_id AS id, score
+ORDER BY score desc;
+
+CALL gds.betweenness.stream('ch-project', {samplingSize:30})
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).channel_id AS id, score
+ORDER BY score desc;
+
+CALL gds.betweenness.stream('ch-project', {samplingSize:10})
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).channel_id AS id, score
+ORDER BY score desc;
+
+CALL gds.betweenness.stream('ch-project')
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).channel_id AS id, score
+ORDER BY score desc;
+
+CALL gds.betweenness.write.estimate('ch-project', { writeProperty: 'betweenness', samplingSize:100 })
+YIELD nodeCount, relationshipCount, bytesMin, bytesMax, requiredMemory;
+
+CALL gds.betweenness.write.estimate('ch-project', { writeProperty: 'betweenness' })
+YIELD nodeCount, relationshipCount, bytesMin, bytesMax, requiredMemory;
+
+match (ch:Channel)
+return ch.channel_id, ch.incomingDegree
+order by ch.incomingDegree desc;
+
+match (ch:Channel)
+return ch.channel_id, ch.incomingDegree;
+
+match (ch:Channel)
+remove ch.inDegree;
+
+match (ch:Channel)
+return ch.inDegree, ch.incomingDegree;
+
+match (ch:Channel);
+
+call gds.degree.write("ch-project", {
+orientation:'REVERSE',
+writeProperty: 'incomingDegree'
+})
+yield centralityDistribution;
+
+match (ch:Channel)
+remove ch.incomingDegree;
+
+match (ch:Channel)
+return ch.channel_id, ch.incomingDegree
+order by ch.incomingDegree desc;
+
+match (ch:Channel)
+return ch.channel_id, ch.incomingDegree;
+
+MATCH (n) 
+WHERE n.inWeight IS NOT NULL
+RETURN DISTINCT "node" as entity, n.inWeight AS inWeight LIMIT 25
+UNION ALL 
+MATCH ()-[r]-() 
+WHERE r.inWeight IS NOT NULL
+RETURN DISTINCT "relationship" AS entity, r.inWeight AS inWeight LIMIT 25;
+
+match (ch:Channel)
+return ch.inWeight, ch.incomingDegree;
+
+call gds.degree.write("ch-project", {
+orientation:'REVERSE',
+relationshipWeightProperty: 'weight',
+writeProperty: 'incomingDegree'
+})
+yield centralityDistribution;
+
+call gds.degree.stream("ch-project", {
+orientation:'REVERSE',
+relationshipWeightProperty: 'weight'
+})
+yield nodeId, score
+RETURN gds.util.asNode(nodeId).channel_id AS id, score AS incomingCentrality
+ORDER BY incomingCentrality DESC;
+
+match (ch:Channel)
+return ch.channel_id, ch.inDegree, ch.inASDF;
+
+match (ch:Channel)
+return ch.channel_id, ch.inDegree, ch.in;
+
+match (ch:Channel)
+return ch.channel_id, ch.inDegree, ch.inWeight;
+
+MATCH (ch:Channel)
+remove ch.inWeight;
+
+match (ch:Channel)
+return ch.channel_id, ch.inDegree, ch.inWeight;
+
+match (ch:Channel)
+where ch.inDegree is NULL
+set ch.inDegree = 0, ch.inWeight=0;
+
+match (ch:Channel)
+return ch.channel_id, ch.inDegree, ch.inWeight;
+
+match (ch:Channel) return count(ch);
+
+MATCH (n:Channel) RETURN n LIMIT 25;

@@ -1,5 +1,4 @@
 *.jsonl
 .venv/
 preprocess_data/*.csv
-*.txt
 graphml_export/
