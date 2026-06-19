@@ -24,5 +24,8 @@ Chat Edges were created by linking conversation sessions that engaged in direct 
 
 * Export: The resulting tables were exported to CSV and subsequently converted to GraphML format for graph analysis.
 
+# Data analysis
+All data analysis was conducted and documented at the Jupyter notebooks with the "analysis_" prefix. There is a WCC and SCC distribution script at distribution_viz.ipynb, and all data resulting from graph processing is stored at the analysis_data folder. There is also a CSV with the selected chats' id and their resulting classification (processed by LLM model Sabiá 4 from Maritaca AI). This file is located at analysis_data/chats_graph/chats_llm_classification.csv
+
 # License
 This project and its data are licensed under CC BY-NC 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc/4.0/
